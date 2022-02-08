@@ -6,45 +6,11 @@ import re
 import PyPDF2
 import tabula
 import numpy as np
+from config import _month_list
 
 _img_dir = 'input/'
 _pdf_dir = 'input_pdf/'
 _patterns = r'([0-9]{3}\.[0-9]{3})|([0-9]{3}\,[0-9]{3})'
-
-_month_list = [
-	{
-		'img': 'sep',
-		'pdf': '2021_09_ENDORS',	
-	},{
-		'img': 'oct',
-		'pdf': '2021_10_ENDORS',	
-	},{
-		'img': 'nov',
-		'pdf': '2021_11_ENDORS',	
-	},{
-		'img': 'dec',
-		'pdf': '2021_12_ENDORS',	
-	},{
-		'img': 'jan',
-		'pdf': '2022_01_ENDORS',	
-	}
-]
-
-# _month_list = [
-# 	{
-# 		'img': 'sep',
-# 		'pdf': '2021_10_ENDORS',	
-# 	},{
-# 		'img': 'oct',
-# 		'pdf': '2021_11_ENDORS',	
-# 	},{
-# 		'img': 'nov',
-# 		'pdf': '2021_12_ENDORS',	
-# 	},{
-# 		'img': 'dec',
-# 		'pdf': '2022_01_ENDORS',	
-# 	},
-# ]
 
 def clean_text(text=''):
 	res = 0
@@ -123,7 +89,6 @@ if __name__ == '__main__':
 
 		# load pdf
 		res_pdf = read_pdf(_pdf_dir, month.get('pdf'))
-		print(res_pdf)
 
 		# load img
 		res_img = read_img(f"{_img_dir}/{month.get('img')}")
@@ -134,14 +99,10 @@ if __name__ == '__main__':
 				print(f"{e.get('value'):,} checked")
 
 		
-		
-		
 		print('\n\n')
 
 
-	# TODO: match with bank statement records
-	# print('read_pdf')
-	# read_pdf(_pdf_dir, month.get('pdf'))
+	# TODO: match with other bank statement records
 	
 	# ==== test single month ====
 	# month = _month_list[0]
